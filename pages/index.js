@@ -2,7 +2,6 @@ import { useState, useMemo, useCallback } from "react";
 import { Button, Card, DataTable, EmptyState, Frame, Heading, Page, Stack, Toast, TextField } from "@shopify/polaris";
 import { ResourcePicker } from "@shopify/app-bridge-react";
 
-
 const Index = () => {
 
   const [appendToTitle, setAppendToTitle] = useState('');
@@ -19,6 +18,7 @@ const Index = () => {
     product.descriptionHtml,
     `${product.descriptionHtml}${appendToDescription}`,
     product.variants[0].price,
+    `${appendToPrice}`
   ]), [products, appendToTitle, appendToDescription, appendToPrice]);
 
   const submitHandler = useCallback(() => {
@@ -52,7 +52,7 @@ const Index = () => {
                 multiline={3}
               />
               <TextField
-                label="Append to title"
+                label="Price After Change"
                 value={appendToPrice}
                 onChange={setAppendPrice}
               />
